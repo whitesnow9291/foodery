@@ -1,0 +1,104 @@
+.order-success-container
+  +outer-container
+
+  .order
+
+    .detail-item
+      +row()
+      margin-bottom: 15px
+
+      span.key
+        +span-columns(6)
+        color: #bcbcbc
+
+      span.value
+        +span-columns(6)
+        text-align: right
+        font-weight: 300
+
+      .delivery-instruction-title
+        color: #bcbcbc
+      .extra-info
+        padding: 10px
+        margin-top: 10px
+        border: 1px solid #bcbcbc
+        font-weight: 300
+
+    .first-name, .last-name, .postcode, .phone, .delivery-date, .delivery-hours
+      +row()
+      +span-columns(6)
+
+    .delivery-address, .restaurant-address
+      +row()
+      +span-columns(12)
+
+    .title
+      text-align: center
+      background-color: $color-1
+      color: #fff
+      padding: 15px 0px
+
+    .restaurant-name
+      padding: 10px 0px
+      font-size: 27px
+      margin: 10px 0px
+      text-align: center
+
+    .thank-you
+      font-size: 30px
+      text-align: center
+      margin: 15px
+      line-height: 25px
+
+.orders-container
+  +outer-container
+
+  .orders
+
+.menuItem-option-container
+  +outer-container
+
+  .menuItem-name
+    color: $text-color-gl
+    padding-top: 10px
+
+  .menuItem-option-row, .memuItem-option-info, .menu-item-summary
+    +row
+
+  .memuItem-option-info
+    padding: 10px 0px 5px
+
+  .memuItem-option-price, .totalPrice, .menuItem-add
+    +span-columns(6)
+
+  .menuItem-option
+    +span-columns(4)
+
+  .menuItem-option
+    +row
+
+  .menuItem-option-select
+    +span-columns(2)
+    text-align: right
+    input[type="radio"], input[type="checkbox"]
+      display: inline-block
+      height: 30px
+
+  .memuItem-option-info
+    +span-columns(10)
+    font-weight: 300
+
+  .menu-item-summary
+    padding: 10px 0px
+
+  .totalPrice
+    font-weight: 300
+    font-size: 20px
+    color: $text-color-gl
+
+  .totalPrice-inner, .menuItem-add-inner
+    width: 200px
+    margin: 0 auto
+
+  .menuItem-add
+    text-align: right

@@ -1,0 +1,158 @@
+<div class="row order-success-container order-container">
+  <div class='col-md-5 custom-center-block col-sm-12 order'>
+    <div class='row'>
+      <div class="col-md-12 title">
+        <%= t('order.order') %> #<%= order.id %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-12 section-title text-center'>
+          <%= order.restaurant.name if order.restaurant.present?%>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-12 details foodery-white-container no-padding no-margin">
+        <table>
+          <tr>
+            <td class='caption'><%= t('order.customer') %>:</td>
+            <td class='value'> <%= order.first_name %> <% order.last_name %></td>
+          </tr>
+          <tr>
+            <td class='caption'><%= t('order.delivery_address') %>:</td>
+            <td class='value'><%= order.delivery_address %></td>
+          </tr>
+          <tr>
+            <td class='caption'><%= t('restaurant.address') %>:</td>
+            <td class='value'>
+              <%= order.restaurant.address_short if order.restaurant.present?%>
+            </td>
+          </tr>
+          <tr>
+            <td class='caption'><%= t('order.postal_code') %>:</td>
+            <td class='value'>
+              <%= order.postal_code %>
+            </td>
+          </tr>
+          <tr>
+            <td class='caption'><%= t('order.phone') %>:</td>
+            <td class='value'>
+              <%= order.phone %>
+            </td>
+          </tr>
+          <tr>
+            <td class='caption'><%= t('order.delivery_date') %>:</td>
+            <td class='value'>
+              <%= order.delivery_day %>
+            </td>
+          </tr>
+          <tr>
+            <td class='caption'><%= t('order.delivery_hours') %>:</td>
+            <td class='value'><%= "#{order.delivery_time.hour}" + ":" + "#{order.delivery_time.min}" %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-12 section-title text-center">
+        <%= t('order.order') %>
+      </div>
+    </div>
+    <div class='row'>
+      <div class="col-md-12 order-list foodery-white-container no-margin">
+        <% order.order_items.includes(:menu_item).group_by{ |s| s.menu_item.name }.each do |menu_name,order_items| %>
+          <div class='row order-item'>
+            <div class='col-md-12'>
+              <div class='row main-item'>
+                <div class='col-xs-9'>
+                  <span class="ammount">
+                    <%= order_items.count%>x
+                  </span>
+                  <span class="name"><%= menu_name || 'removed' %></span>
+                </div>
+                <div class='col-xs-3 text-right'>
+                  <span class="price"><strong><%= number_to_currency(order_items.count * order_items.first.menu_item.price, unit: "$", separator: ".", format: "%u%n") %></strong></span>
+                </div>
+              </div>
+              <% all_option_items = OptionItem.where(:order_item_id=>order_items.map{|s| s.id})%>
+              <%if all_option_items.present?%>
+                <%all_option_items.group_by{|s| s.name}.each do |option_name,option_items|%>
+                  <div class='row'>
+                    <div class='col-md-12'>
+                      <div class="row option-item">
+                        <div class='col-xs-9'>
+                          <span class="name">- <%= option_items.count %> X <%= option_name%></span>
+                        </div>
+                        <div class="col-xs-3 text-right">
+                          <span class='price'><strong><%= number_to_currency(option_items.first.total_price * option_items.count, unit: "$", separator: ".", format: "%u%n") %></strong></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              <%end%>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+    <div class='row foodery-white-container summary no-padding'>
+      <div class='col-md-7 delivery'>
+        <div class='row'>
+          <div class='col-md-12'>
+            <%= t('order.delivery_instructions') %>:
+          </div>
+        </div>
+        <div class='row delivery-instructions'>
+          <div class='col-md-12'>
+            <strong><%= order.delivery_instructions %></strong>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-md-5 summary-price'>
+        <div class='row subtotal'>
+          <div class='col-md-12'>
+            <span class="name"><%= t('order.subtotal') %></span>
+            <span class="value price"><%= number_to_currency(order.total_price - order.restaurant.delivery_fee, unit: "$", separator: ".", format: "%u%n") if order.restaurant.present?%>
+            </span>
+          </div>
+        </div>
+        <div class='row delivery-fee'>
+          <div class='col-md-12'>
+            <span class="name"><%= t('order.delivery_fee') %></span>
+            <span class="value price"><%= number_to_currency(order.restaurant.delivery_fee, unit: "$", separator: ".", format: "%u%n") if order.restaurant.present?%></span>
+          </div>
+        </div>
+        <div class='row tax'>
+          <div class='col-md-12'>
+            <span class="name"><%= t('order.tax') %></span>
+            <span class="value price"><%= number_to_currency(order.total_price * 0.14975, unit: "$", separator: ".", format: "%u%n") %></span>
+          </div>
+        </div>
+        <div class='row total'>
+          <div class='col-md-12'>
+            <span class="name"><strong><%= t('order.total') %></strong></span>
+            <span class="value price"><strong><%= number_to_currency(order.total_price_with_tax, unit: "$", separator: ".", format: "%u%n") %></strong>
+            </span>
+          </div>
+        </div>
+        <% if params[:controller] == "restaurateurs" %>
+          <div class='row total'>
+            <div class='col-md-12'>
+              <span class="name green"><strong><%= t('order.you_receive') %></strong></span>
+              <span class="value price green"><strong><%= number_to_currency((order.total_price_with_tax - (order.total_price * order.restaurant.fee)), unit: "$", separator: ".", format: "%u%n") if order.restaurant.present?%></strong>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-md-12 order-actions no-padding'>
+        <%= yield :order_action %>
+      </div>
+    </div>
+  </div>
+</div>

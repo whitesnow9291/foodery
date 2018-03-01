@@ -1,0 +1,10 @@
+.modal.fade role="dialog" tabindex="-1" id="#{modal_name}"
+  .modal-dialog
+    .modal-content
+      .modal-header
+        - if !local_assigns[:without_close]
+          button.close aria-label="Close" data-dismiss="modal" type="button"
+            span aria-hidden="true"  &times;
+        h6.modal-title.text-center == modal_header
+      .modal-body == modal_body
+

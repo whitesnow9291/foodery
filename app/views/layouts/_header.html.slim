@@ -1,0 +1,32 @@
+nav.navbar.navbar-default.navbar-restaurants class="nav-#{controller_name}-#{action_name}"
+  .container-fluid.foodery-header
+    .navbar-header
+      a.navbar-toggle.collapsed.navbar-collapsed-menu aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" type="button"
+        = "|#{t('menu.menu')}"
+        span.caret
+    #navbar.collapse
+      ul.nav
+        li
+          a.auth href="#" = t('account.sign_in')
+    - if content_for? :header_menu
+      = yield :header_menu
+    - else
+      .navbar-collapse.collapse
+        .pull-left
+          .btn-group
+            a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#"
+              = "| #{t('menu.menu')}"
+              i.fa.fa-chevron-down
+            ul.dropdown-menu
+              li
+                a href="#" = t('menu.item')
+        .pull-right
+          = render partial: 'layouts/dropdown_menu'
+          a.checkout href="#"
+            img src="#{image_path 'bag.png'}"
+        .brand-name.text-center TASTIER
+
+        .header-message
+          h3 = t('delivered_to')
+          h2 Covent Garder
+

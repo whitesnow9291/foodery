@@ -1,0 +1,354 @@
+<div id="delivery-page">
+  
+    <section id="delivery-form" class="container-fluid">
+      <div class="container">
+        <div class="row form-and-order">
+          <div class="col-md-6 col-sm-7 putBelow col-md-offset-1 col-sm-offset-0">
+            <h3 class="sectionTitle"><%= t('order.check_out') %></h3>
+            <div class="notify-message"></div>
+            <div class="form-container">
+              <%= form_for active_order, url: process_order_orders_path, method: 'post', html: { id: 'checkout-form' } do |f| %>
+  
+                <p class="form-title"><%= t('order.delivery_details') %></p>
+                <div class="form-row">
+                  <div class="process-alert">
+                    <div class="alert alert-danger">
+                      <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true"> &times;</span>
+                      </button>
+                      <div class="text-msg"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-column add-margin-right">
+                    <%= f.label :first_name, t('user.first_name') %>
+                    <%= f.text_field :first_name, placeholder: 'Ryan', class: 'input-box' %>
+                  </div>
+                  <div class="form-column add-margin-left">
+                    <%= f.label :last_name, t('user.last_name') %>
+                    <%= f.text_field :last_name, placeholder: 'Hamilton', class: 'input-box' %>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-column add-margin-right">
+                    <%= f.label :date, t('order.delivery_day_time') %>
+                    <%= f.text_field :date, placeholder: t('order.delivery_day_time'), class: 'input-box', id: 'delivery-date', 'data-open-time': "#{active_order.restaurant.hours_open.utc}", 'data-close-time': "#{active_order.restaurant.hours_close.utc}", 'data-avg-duration': "#{active_order.restaurant.avg_delivery_time}" %>
+                  </div>
+                  <div class="form-column add-margin-left">
+                    <%= f.label :time, t('order.time') %>
+                    <%= f.select :time, time_select_with_15_gap_after_order(active_order.restaurant.hours_open.utc, active_order.restaurant.hours_close.utc,active_order) ,{}, { include_blank: false, class: 'input-box'} %>
+                  </div>
+                </div>
+  
+                <%= f.label :delivery_address_1, "#{t('user.address')}#1" %>
+                <%= text_field_tag 'order[delivery_address_1]', active_order.address_1, class: 'input-box' %>
+                <%= f.label :delivery_address_2, "#{t('user.address')}#2" %>
+                <%= text_field_tag 'order[delivery_address_2]', active_order.address_2, class: 'input-box' %>
+  
+                <div class="form-row">
+                  <div class="form-column add-margin-right">
+                    <%= f.label :postal_code, t('order.postal_code') %>
+                    <%= f.text_field :postal_code, value: session[:postal_code], class: 'input-box postal-input', readonly: true %>
+                  </div>
+                  <div class="form-column add-margin-left">
+                    <%= f.label :phone, t('order.phone') %>
+                    <%= f.text_field :phone, placeholder: t('order.phone'), class: 'input-box' %>
+                  </div>
+                </div>
+                <%= f.label :delivery_instructions, t('order.delivery_instructions') %>
+                <%= f.text_area :delivery_instructions, placeholder: t('order.option_instructions'), class: 'input-box' %>
+  
+                <p class="form-title"><%= t('order.payment_details') %></p>
+  
+                <% if current_user && current_user.stripe_customer_id %>
+                  <div class="use-new-card">
+                    <button class="btn btn-success btn-block btn-foodery"><%= t('order.use_different_card') %></button>
+                  </div>
+                  <div class="submit-checkout without-stripe">
+                    <%= f.submit "#{t('order.process_with_card')} (#{current_user.last4})", class: 'btn btn-success btn-foodery btn-block' %>
+                  </div>
+                <% end %>
+  
+                <div class="card-creation <%= 'hidden' if current_user && current_user.stripe_customer_id %>">
+                  <%= hidden_field_tag :stripe_card_token %>
+                  <%= label_tag :card, t('order.credit_card_number') %>
+                  <%= text_field_tag :card, nil, class: 'input-box cc-num', placeholder: t('order.credit_card_number') %>
+  
+                  <div class="form-row">
+                    <div class="form-column add-margin-right">
+                      <%= label_tag :exp_date, t('order.expiration_card_date') %>
+                      <%= text_field_tag :exp_date, nil, class: 'input-box cc-exp', placeholder: t('order.expiration_card_date') %>
+                    </div>
+                    <div class="form-column add-margin-left add-margin-right">
+                      <%= label_tag :cvc, 'CVC' %>
+                      <%= text_field_tag :cvc, nil, class: 'input-box cc-cvc', placeholder: 'CVC' %>
+                    </div>
+                    <div class="form-column add-margin-left">
+                      <label for="BPostal"><%= t('order.billing_postal') %></label>
+                      <input type="text" id="BPostal" class="input-box" placeholder=<%= t('order.billing_postal') %>>
+                    </div>
+                  </div>
+  
+                  <div class="submit-checkout with-stripe">
+                    <button class="buttonProcess" data-disable_with="Processing..."><%= t('order.place_order') %></button>
+                  </div>
+  
+                </div>
+                <div class="stripe-badge">
+                  <a href="https://stripe.com/ca" target="_blank">
+                    <img alt="Powered by stripe" src="<%=  image_url 'powered_by_stripe.png'  %>">
+                  </a>
+                </div>
+              <% end %>
+            </div>
+          </div>
+  
+          <div class="col-md-4 col-sm-5 putAbove">
+            <h3 class="sectionTitle subTitle-for-Mobile"><%= t('order.check_out') %></h3>
+            <div class="my-order-box">
+              <%= render partial: 'orders/checkout', locals: { order: active_order, show_checkout: false, checkout_page: true } %>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    $(function() {
+      // -------- Reorder on mobile size --------- //
+      if(window.innerWidth <= 767) {
+        var container = document.getElementsByClassName("form-and-order")[0];
+        var putAbove  = document.getElementsByClassName("putAbove")[0];
+        var putBelow  = document.getElementsByClassName("putBelow")[0];
+          container.insertBefore(putAbove, putBelow);
+      }
+    });
+  </script>
+  
+  <%=  content_for :javascript_header do %>
+    <%=  javascript_include_tag "jquery.loading-indicator.min"  %>
+  <% end -%>
+  <script type="text/javascript">
+  
+    var bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
+  
+  this.Cart = (function() {
+    function Cart(form) {
+      var avg_duration;
+      this.form = form;
+      this.errorHandler = bind(this.errorHandler, this);
+      this.successHandler = bind(this.successHandler, this);
+      this.stripeResponseHandler = bind(this.stripeResponseHandler, this);
+      if (this.form.size() === 0) {
+        return;
+      }
+      this.alert = this.form.find('.process-alert');
+      this.submit_with_stripe = this.form.find('.submit-checkout.with-stripe');
+      this.submit_without_stripe = this.form.find('.submit-checkout.without-stripe');
+      this.btn_new_card = this.form.find('.use-new-card button');
+      this.new_card_conitainer = $('.card-creation');
+      this.datePicker = this.form.find('#delivery-date');
+      avg_duration = parseInt(this.datePicker.data('avg-duration'));
+      this.parseAvailableHours(this.datePicker.data('open-time'), this.datePicker.data('close-time'));
+      moment.locale('en');
+      moment.tz('EST').format();
+      this.datePicker.datetimepicker({
+        locale: document.documentElement.lang || 'en',
+        timeZone: 'EST',
+        sideBySide: true,
+        format: 'YYYY-MM-DD',
+        minDate: moment.tz('EST').add(avg_duration, 'm').millisecond(0).second(0).minute(0).hour(0)
+      });
+      this.pickedDate = this.datePicker.data('DateTimePicker').date();
+      this.datePicker.on('dp.change', (function(_this) {
+        return function(e) {
+          _this.pickedDate = e.date;
+          return _this.checkAvailableHours();
+        };
+      })(this));
+      this.checkAvailableHours()
+      this.eventHandler();
+    }
+  
+    Cart.prototype.checkAvailableHours = function() {
+      var avg_duration;
+      avg_duration = parseInt(this.datePicker.data('avg-duration'));
+      if (this.pickedDate.format('YYYY-MM-DD') === moment.tz('EST').add(avg_duration, 'm').format('YYYY-MM-DD')) {
+        this.order_time = this.form.find('#order_time');
+        /*this.order_time.html("").html("<%= append_min_time.html_safe %>");*/
+        return true;
+      } else {
+        this.order_time = this.form.find('#order_time');
+        /*this.order_time.html("").html("<%= append_time.html_safe%>");*/
+        return true;
+      }
+    };
+  
+    Cart.prototype.parseAvailableHours = function(from, to) {
+      this.from = moment(from);
+      return this.to = moment(to);
+    };
+  
+    Cart.prototype.eventHandler = function() {
+      this.form.find('.cc-num').payment('formatCardNumber');
+      this.form.find('.cc-cvc').payment('formatCardCVC');
+      this.form.find('.cc-exp').payment('formatCardExpiry');
+      this.btn_new_card.click((function(_this) {
+        return function(e) {
+          e.preventDefault();
+          return _this.new_card_conitainer.toggleClass('hidden');
+        };
+      })(this));
+      this.submit_with_stripe.click((function(_this) {
+        return function(e) {
+          var notify;
+          e.preventDefault();
+          if (!_this.checkAvailableHours()) {
+            notify = new Notify("Please use avaiable hours from " + (_this.from.format('HH:mm')) + " to " + (_this.to.format('HH:mm')), 'danger');
+            notify.show();
+            return;
+          }
+          Stripe.card.createToken({
+            number: _this.form.find('.cc-num').val(),
+            cvc: _this.form.find('.cc-cvc').val(),
+            exp: _this.form.find('.cc-exp').val()
+          }, _this.stripeResponseHandler);
+          return _this.progress(true);
+        };
+      })(this));
+      return this.submit_without_stripe.click((function(_this) {
+        return function(e) {
+          var data, notify, url;
+          e.preventDefault();
+          if (!_this.checkAvailableHours()) {
+            notify = new Notify("Please use avaiable hours from " + (_this.from.format('HH:mm')) + " to " + (_this.to.format('HH:mm')), 'danger');
+            notify.show();
+            return;
+          }
+          _this.progress(true);
+          url = _this.form.prop('action');
+          data = _this.form.serialize();
+          _this.changeFieldsState(_this.form, true);
+          return $.ajax({
+            url: url,
+            method: 'POST',
+            data: data,
+            success: _this.successHandler,
+            error: function(rsp) {
+              notify = _this.form.find('.process-alert');
+              notify.show();
+              notify.find('.text-msg').text('Something goes wrong please comeback later');
+              _this.progress(false);
+              return _this.changeFieldsState(_this.form, false);
+            }
+          });
+        };
+      })(this));
+    };
+  
+    Cart.prototype.stripeResponseHandler = function(status, rsp) {
+      var data, url;
+      console.log('Stripe response handler')
+      if (status === 200) {
+        data = this.form.serializeArray();
+        data.push({
+          name: "order[card_token]",
+          value: rsp.id
+        });
+        url = this.form.prop('action');
+        console.log('Stripe response handler 200')
+        return $.ajax({
+          url: url,
+          method: 'POST',
+          data: $.param(data),
+          success: this.successHandler,
+          error: (function(_this) {
+            console.log('Stripe error handler')
+            return function(rsp) {
+              var notify;
+              notify = _this.form.find('.process-alert');
+              notify.show();
+              notify.find('.text-msg').text('Something goes wrong please comeback later');
+              _this.progress(false);
+              return _this.changeFieldsState(_this.form, false);
+            };
+          })(this)
+        });
+      } else {
+        console.log('Stripe response handler 200 else')
+        this.alert.show();
+        this.alert.find('.alert').text(rsp.error.message);
+        this.progress(false);
+        return this.changeFieldsState(this.form, false);
+      }
+    };
+  
+    Cart.prototype.successHandler = function(data) {
+      console.log('Stripe success handler')
+      console.log(data)
+      this.progress(false);
+      this.changeFieldsState(this.form, false);
+      if (!!data.error === false) {
+        return window.location = data.success_url;
+      }else {
+        return this.notify(data.error_html);
+      }
+    };
+  
+    Cart.prototype.errorHandler = function(data) {
+      console.log('Stripe error handler function')
+      console.log(data)
+    };
+  
+    Cart.prototype.changeFieldsState = function(container, state) {
+      return container.find('input[type=text], button[type=submit], textarea, button').prop('disabled', state);
+    };
+  
+    Cart.prototype.notify = function(html) {
+      var notify;
+      notify = this.form.find('.process-alert');
+      notify.html(html);
+      return notify.show();
+    };
+  
+    Cart.prototype.progress = function(state) {
+      $('body').loadingIndicator();
+      var loader = $('body').data("loadingIndicator");
+      // this.cardProgress = this.form.find('.process-progressBar');
+      // this.fader = this.form.find('.fader');
+      if (state) {
+        loader.show();
+        // this.cardProgress.show();
+        // return this.fader.show();
+      } else {
+        loader.hide();
+        $(window).scrollTop(0);
+        // this.cardProgress.hide();
+        // return this.fader.hide();
+      }
+    };
+  
+    return Cart;
+  
+  })();
+  function progress(state){
+    $('body').loadingIndicator();
+    var loader = $('body').data("loadingIndicator");
+    if (state) {
+      loader.show();
+    } else {
+      loader.hide();
+    }
+  }
+  $("#delivery-form").submit(function(e){
+    //e.preventDefault();
+    progress(true);
+  });
+  
+  // ---
+  // generated by coffee-script 1.9.2
+  </script>
+  

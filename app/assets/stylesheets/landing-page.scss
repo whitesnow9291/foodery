@@ -1,0 +1,637 @@
+.icon{
+  margin: 2px;
+  width: 36px;
+  height: 36px;
+}
+
+#landing-page .container-fluid {
+  padding: auto 0;
+}
+#landing-page #coverFilter {
+  height: auto;
+  background: #f5f5f5;
+  text-align: left;
+  background: asset-url('image-subsection.png') no-repeat center bottom;
+  background-size: 100%;
+}
+#landing-page #coverFilter .equal-columns {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+#landing-page #coverFilter .equal-columns .col-md-6, #landing-page #coverFilter .equal-columns .col-sm-6 {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+#landing-page #coverFilter .background-grey {
+  background: #f5f5f5;
+  height: 100%;
+}
+#landing-page #coverFilter .content {
+  background: rgba(252,252,252,0.9);
+  display: inline-block;
+  margin: 55px 0;
+  padding: 0 80px 0 35px;
+}
+#landing-page #coverFilter h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 48px;
+  text-align: left;
+  color: #343434;
+  margin: 65px 0 0;
+}
+#landing-page #coverFilter .content .subtitle {
+  color: #525252;
+  font-family: "Roboto", sans-serif;
+  font-size: 30px;
+  margin: 35px 0;
+}
+#landing-page #coverFilter .filter-container {
+  margin-left: 0;
+  width: 100%;
+}
+#landing-page #coverFilter .filter {
+  margin: 30px 0 60px;
+  display: inline-flex;
+  width: auto;
+}
+#landing-page #coverFilter .filter-container .inputBox {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  border-bottom: 3px solid #cecece;
+  padding: 20px 10px;
+  color: #343434 !important;
+}
+
+#landing-page #coverFilter .filter-container .inputBox::-webkit-input-placeholder {
+  color: #676767 !important
+}
+
+#landing-page #coverFilter .filter-container .inputBox:-moz-placeholder {
+  color: #676767 !important
+}
+
+#landing-page #coverFilter .filter-container .inputBox::-moz-placeholder {
+  color: #676767 !important
+}
+
+#landing-page #coverFilter .filter-container .inputBox:-ms-input-placeholder {
+  color: #676767 !important
+}
+
+#landing-page #coverFilter .filter-container .findButton {
+  width: 290px;
+  height: auto;
+  padding: 16px 0;
+  margin-left: 45px;
+  color: #343434;
+  background: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 33px;
+  border: 1px solid #64d0d2;
+  -webkit-transition: background 500ms ease;
+  -moz-transition: background 500ms ease;
+  -ms-transition: background 500ms ease;
+  -o-transition: background 500ms ease;
+  transition: background 500ms ease;
+}
+
+.filter form {
+  display: inline-flex;
+}
+
+@media only screen and (max-width: 1122px) {
+  #landing-page #coverFilter {
+    padding-bottom: 0;
+  }
+  #landing-page #coverFilter h1 {
+    font-size: 45px;
+  }
+  #landing-page #coverFilter .filter-container .findButton {
+    padding: 15px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #landing-page #coverFilter .filter-container .findButton {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 855px) {
+  #landing-page #coverFilter .filter {
+    width: auto;
+  }
+}
+@media only screen and (max-width: 751px) {
+  #landing-page #coverFilter {
+    background-position: bottom;
+    background-size: auto;
+  }
+  #landing-page #coverFilter .content {
+    margin: 30px 0;
+    padding-right: 30px;
+  }
+  #landing-page #coverFilter h1 {
+    font-size: 35px;
+    margin-top: 35px;
+  }
+  #landing-page #coverFilter .content .subtitle {
+    font-size: 23px;
+    margin: 10px 0;
+  }
+  #landing-page #coverFilter .content .breakline {
+    display: none;
+  }
+  #landing-page #coverFilter .filter-container .filter {
+    margin: 20px 0 56px;
+  }
+  #landing-page #coverFilter .mobile-rmv-padding {
+    padding: 0;
+    height: 150px;
+  }
+  #landing-page #coverFilter .filter-container .filter {
+    width: 100%;
+  }
+  #landing-page #top-navigation .menu {
+    display: block;
+    float: right;
+    list-style: none;
+    margin-top: 20px;
+    width: auto;
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+  #landing-page #top-navigation .menu li {
+    margin: 0;
+    padding: 0;
+  }
+  #landing-page #top-navigation .top-menu-btn {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #landing-page #coverFilter .filter {
+    margin-bottom: 30px;
+  }
+  #landing-page #coverFilter h1 {
+    margin: 30px 0;
+  }
+}
+@media only screen and (max-width: 538px) {
+  #landing-page #coverFilter .filter-container .findButton {
+    width: 90%;
+    margin-left: 15px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #landing-page #coverFilter .filter {
+    display: block;
+  }
+}
+@media only screen and (max-width: 500px), only screen and (max-width: 750px) and (orientation : landscape) {
+  #landing-page #coverFilter {
+    padding: 0;
+    background: #fff;
+  }
+  #landing-page #coverFilter .mobile-background {
+    height: 150px;
+    background: asset-url('image-subsection.png') no-repeat center bottom;
+    background-size: 100%;
+  }
+  #landing-page #coverFilter .container {
+    padding: 0;
+  }
+  #landing-page #coverFilter .container .content {
+    margin: 10px auto;
+    display: block;
+    border: 1px solid #dbdbdb;
+    background: #fff;
+    width: 95%;
+  }
+  #landing-page #coverFilter .filter-container .findButton {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 440px), only screen and (max-width: 750px) and (orientation : landscape) {
+  #landing-page #top-navigation .menu  {
+    margin-top: 8px;
+  }
+  #landing-page #top-navigation .menu .login-btn {
+    padding: 8px 22px;
+    font-size: 14px;
+  }
+  #landing-page #coverFilter .content {
+    padding: 20px;
+  }
+  #landing-page #coverFilter h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
+  #landing-page #coverFilter .content .subtitle {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (max-width: 750px) and (orientation : landscape) {
+  #landing-page #coverFilter .filter-container .findButton {
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  #landing-page #coverFilter h1 {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+  #landing-page #coverFilter .filter-container .findButton {
+    width: auto;
+  }
+
+}
+
+/* -------- Restaurants available --------- */
+#landing-page #restaurants-available {
+  background: #fff;
+  overflow: hidden;
+}
+#landing-page #restaurants-available .sectionTitle {
+  margin: 90px auto 50px;
+  color: #343434;
+}
+#landing-page #restaurants-available .productBox {
+  width: 100%;
+  height: 650px;
+  background: #fbfbfb;
+  position: relative;
+  margin-bottom: 60px;
+  border: 1px solid #dbdbdb;
+}
+#landing-page #restaurants-available .productBox .image-frame {
+  width: 100%;
+  height: 290px;
+  overflow: hidden;
+}
+#landing-page #restaurants-available .productBox .image-frame img {
+  width: 100%;
+}
+#landing-page #restaurants-available .productBox .productTitle {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 35px;
+  margin: 35px 0 0 25px;
+  color: #484848;
+}
+#landing-page #restaurants-available .productBox .product-desc {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  margin: 20px 50px 0 25px;
+  color: #484848;
+  line-height: 35px;
+}
+#landing-page #restaurants-available .productBox .viewButton {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #16b9bb;
+  background: transparent;
+  border: none;
+  position: absolute;
+  left: 35px;
+  bottom: 35px;
+  outline: none;
+}
+#landing-page #restaurants-available .productBox .viewButton:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 991px) {
+  #landing-page #restaurants-available .productBox .image-frame {
+    height: 220px;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #landing-page #restaurants-available .sectionTitle {
+    margin: 50px 0 50px;
+    font-size: 35px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #landing-page #restaurants-available .row {
+    display: flex;
+  }
+  #landing-page #restaurants-available .productBox {
+    margin-bottom: 30px;
+  }
+  #landing-page #restaurants-available .productBox .productTitle {
+    font-size: 25px;
+    margin-top: 15px;
+  }
+  #landing-page #restaurants-available .productBox .product-desc {
+    margin-top: 15px;
+    font-size: 15px;
+  }
+  #landing-page #restaurants-available .productBox .viewButton {
+    left: 25px;
+  }
+  /*#landing-page #restaurants-available .productBox .viewButton {
+  position: static;
+  margin: 35px 0 35px 25px;
+  }*/
+}
+
+@media only screen and (max-width: 690px) {
+  #landing-page #restaurants-available .container {
+    /*padding: 0;*/
+  }
+  #landing-page #restaurants-available .container .col-sm-6 {
+    padding: 0;
+  }
+  #landing-page #restaurants-available .row {
+    display: block;
+  }
+  #landing-page #restaurants-available .productBox {
+    height: auto;
+  }
+  #landing-page #restaurants-available .productBox .viewButton {
+    position: static;
+    margin: 20px 0 35px 20px;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 438px) {
+  #landing-page #restaurants-available .sectionTitle {
+    margin: 30px 0 30px;
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 377px) {
+  #landing-page #restaurants-available .sectionTitle {
+    font-size: 25px;
+  }
+  #landing-page #restaurants-available .productBox .product-desc {
+    line-height: 25px;
+  }
+}
+
+/* -------- Steps sections --------- */
+#landing-page #steps-section .step-container {
+  text-align: center;
+}
+#landing-page #steps-section {
+  background: #f7f7f7;
+  overflow: hidden;
+}
+#landing-page #steps-section .sectionTitle {
+  margin: 50px auto 50px;
+}
+#landing-page #steps-section .step-box {
+  margin-bottom: 65px;
+  display: inline-flex;
+}
+#landing-page #steps-section .step-box .column {
+  width: auto;
+  height: auto;
+}
+#landing-page #steps-section .step-number {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: #16b9bb;
+  text-align: center;
+  height: 75px;
+  width: 75px;
+  border-radius: 38px;
+  border: 1px solid #16b9bb;
+  line-height: 75px;
+}
+#landing-page #steps-section .step-description {
+  display: block;
+}
+#landing-page #steps-section .step-description p {
+  font-family: "Roboto", sans-serif;
+  font-size: 28px;
+  color: #626262;
+  text-align: left;
+  margin: 0 0 0 30px;
+  display: inline-block;
+}
+
+@media only screen and (max-width: 1199px) {
+  #landing-page #steps-section .step-description p {
+    font-size: 20px;
+    margin: 10px 0 0 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #landing-page #steps-section .step-container {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 528px) {
+  #landing-page #steps-section .step-description p {
+    font-size: 18px;
+    margin-top: 0;
+  }
+  #landing-page #steps-section .step-number {
+    height: 55px;
+    width: 55px;
+    line-height: 55px;
+    font-size: 32px;
+  }
+}
+
+@media only screen and (max-width: 405px) {
+  /*#landing-page #steps-section .step-box {
+  display: inline-block;
+  }*/
+  #landing-page #steps-section .step-number {
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    font-size: 26px;
+    margin: auto;
+  }
+  #landing-page #steps-section .step-description p {
+    font-size: 20px;
+    text-align: left;
+    margin: 0px 10;
+  }
+}
+@media only screen and (max-width: 377px) {
+  #landing-page #steps-section .sectionTitle {
+    font-size: 25px;
+  }
+}
+@media only screen and (max-width: 328px) {
+  #landing-page #steps-section .sectionTitle {
+    font-size: 35px;
+  }
+  #landing-page #steps-section .step-box {
+    margin-bottom: 40px;
+  }
+  #landing-page #steps-section .step-description p {
+    font-size: 14px;
+    margin: 0 0 0 10px;
+  }
+}
+
+/* -------- Sub section -------- */
+#landing-page #sub-section {
+  background: asset-url('image-subsection.png') no-repeat top center;
+  margin-top: 0;
+}
+#landing-page #sub-section .sub-content {
+  height: auto;
+  width: auto;
+  margin: 80px auto;
+  background: #fff;
+  width: 970px;
+}
+#landing-page #sub-section .sub-content h2 {
+  padding-top: 80px;
+  font-size: 48px;
+  margin: 0;
+  color: #474747;
+}
+#landing-page #sub-section .sub-content p {
+  font-size: 30px;
+  width: auto;
+  padding: 0 80px;
+  font-weight: 400;
+  color: #474747;
+}
+#landing-page #sub-section .sub-content .sub-button {
+  text-transform: uppercase;
+  padding: 20px 55px;
+  font-size: 18px;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border: 1px solid #16b9bb;
+  border-radius: 31px;
+  color: #474747;
+}
+
+@media only screen and (max-width: 1200px) {
+  #landing-page #sub-section .sub-content {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 775px) {
+  #landing-page #sub-section {
+    margin: 50px auto;
+  }
+  #landing-page #sub-section .sub-content h2 {
+    padding-top: 75px;
+    font-size: 35px;
+  }
+  #landing-page #sub-section .sub-content p {
+    font-size: 18px;
+    margin: 20px auto;
+    width: 90%;
+    padding: 0 10px;
+  }
+  #landing-page #sub-section .sub-content .sub-button {
+    margin: 20px auto 75px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #landing-page .sub-content {
+    width: 75%;
+  }
+  #landing-page #sub-section {
+    margin-top: 0;
+  }
+  #landing-page #sub-section, #sub-section .container {
+    /*padding: 0;*/
+  }
+  #landing-page #sub-section .sub-content {
+    width: 100%;
+    margin: 40px auto;
+  }
+  #landing-page #sub-section .sub-content .sub-button {
+    padding: 20px 35px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #landing-page #sub-section {
+    width: 100%;
+  }
+  #landing-page #sub-section .sub-content {
+    width: 90%;
+  }
+  #landing-page #sub-section .container {
+    padding: 0;
+  }
+  #landing-page #sub-section .sub-content h2 {
+    font-size: 30px;
+  }
+  #landing-page #sub-section .sub-content p {
+    font-size: 15px;
+  }
+}
+
+
+/* ---------- Footer ---------- */
+#footer {
+  background: #a69d9d;
+  margin-bottom: 0;
+  padding: 30px 0;
+}
+#footer .copyright {
+  line-height: 45px;
+  color: #fff;
+}
+
+@media only screen and (max-device-width: 750px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : landscape){
+  #landing-page #top-navigation .menu {
+    margin-top: 7px;
+    display: inline-block;
+  }
+}
+
+#availableRestaurants .imageFrame{
+  max-height: 190px;
+}
+
+#delivery-page .sectionTitle {
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+#delivery-page .form-container label {
+  font-weight: normal;
+}
+
+.min-order {
+  color: red;
+  padding-bottom: 30px;
+}

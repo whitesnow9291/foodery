@@ -1,0 +1,39 @@
+<div class="menuItem-option-container" data-url="<%= add_item_order_path @menu_item %>"   ng-app="myApp" ng-controller="myCtrl">
+  <div class="menuItem-options content">
+    <% @menu_item.option_groups.each do |group| %>
+      <span class="group-title menuItem-optionGroup"><%= group.name %></span>
+      <div class="row groups-selector <%= group.single? ? 'radio-group' : 'checkbox-group' %>">
+        <% group.options.each do |item| %>
+          <div class="col-md-6 col-sm-6">
+            <div class="checkbox-row">
+              <input id='<%="choice_#{item.id}"%>' class="menuItem-option-val" data-price="<%= number_with_precision(item.price, precision: 2)
+              %>" name="<%= group.name %>" type="<%= (group.single? ? 'radio' : 'checkbox') %>" value="<%= item.id %>"  ng-click="countPrice();"/><label for='<%="choice_#{item.id}"%>'>
+                <%= "#{item.name} (#{number_to_currency(item.price, unit: '$', separator: '.', format: '%u%n')})" %></label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="controll-and-price">
+      <div class="controll-ammount">
+        <div class="controll-button">
+          <button class="btn decrease" ng-click="subItem()" ng-disabled="count == 1" ng-class="count > 1 ? 'exist' : ''"></button>
+          <div class="ammount"><%= t('order.qty') %>: <span>{{count}}</span></div>
+          <button class="btn increase" ng-click="addItem()"></button>
+        </div>
+      </div>
+      <button class="add-btn addToCart cart-widget-trigger" ng-click="submit();">
+        <%= t('order.add_to_cart') %> $
+        <span class="amount" data-price="<%= number_with_precision(@menu_item.price, precision: 2)%>">{{price | number: 2}}
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  angular.bootstrap($('.menuItem-option-container'), ['myApp']);
+</script>

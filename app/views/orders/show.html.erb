@@ -1,0 +1,14 @@
+<% content_for :order_action do %>
+  <div class="thank-you"><%= raw t('thank_you') %></div>
+<% end %>
+
+<% content_for :header_navigation do %>
+  <%= link_to :back do %>
+    <strong>< <%= t('back') %></strong>
+  <% end %>
+<% end %>
+
+<% @hide_logo = true %>
+
+<%= render partial: 'shared/header_navigation_partial' %>
+<%= render partial: 'order_info', locals: {order: @order} %>

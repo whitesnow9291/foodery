@@ -1,0 +1,80 @@
+<% content_for :account_content do %>
+<div class="row">
+  <div class="col-xs-4 col-sm-2">
+    <h2><%= t('menu.menu') %></h2>
+  </div>
+  <% if false  %>
+  <div class="col-xs-2" style="padding-top: 25px;">
+    <a  target="_blank" href="https://tastier.zendesk.com/hc/fr/sections/115000238293-Annonce"><%=  t('menu.help')  %></a>
+  </div>
+  <% end  %>
+</div>
+
+<div class="foodery-white-container menu-container">
+  <div class="row row-v-center">
+    <div class="col-md-6">
+      <h3><%= t('menu.your_menu') %></h3>
+    </div>
+    <div class="col-md-6 text-right align-middle">
+      <a data-toggle="modal" data-target="#restaurateur-create-modal"><%= t('menu.add') %></a>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div id='menu-list'>
+        <% @restaurants.each do |restaurant| %>
+          <div class='row row-v-center'>
+            <div class='col-md-2'>
+              <input type="checkbox" class='toggle' data-width="80" data-height="28" data-onstyle="primary" data-url="<%= toggle_restaurateur_restaurant_path restaurant %>" <%= 'checked' if restaurant.available %> >
+            </div>
+            <div class='col-md-10'>
+              <% if restaurant.available %>
+                <%= t('restaurant.accepting_payments',name:restaurant.name) %>
+              <% else %>
+                <%= t('restaurant.not_accepting_payments',name:restaurant.name) %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class='row margin-botom-20'>
+    <div class='col-md-12'>
+      <p class='no-margin'><%= t('tastier_utilizes') %> <a href="https://stripe.com/connect" target="_blank">Stripe Connect</a> <%= t('transfer_earnings') %></p>
+      <p class='no-margin'><%= t('bank_details') %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+        <% if current_user.stripe_uid %>
+          <%= link_to remove_stripe_connect_restaurateurs_path, class: "stripe-connect" do %>
+            <span><%= "#{t('remove_stripe_id')}: #{current_user.stripe_uid}" %></span>
+          <% end %>
+        <% else %>
+          <%= link_to user_stripe_connect_omniauth_authorize_path, class: "stripe-connect" do %>
+            <span>Stripe connect</span>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+</div>
+
+<%= render partial: 'modal_create' %>
+
+<script>
+  $(function() {
+    $('.toggle').bootstrapToggle();
+    $('.toggle').change(function(e) {
+      console.log('change', $(this).data('url') );
+      e.stopPropagation();
+      window.location.replace($(this).data('url'));
+    })
+  })
+</script>
+
+<% end %>
+
+<%= render partial: 'shared/account' %>

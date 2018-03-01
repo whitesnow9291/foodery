@@ -1,0 +1,8 @@
+<% if @restaurant.errors.any? %>
+  $("#restaurateur-create-modal .modal-body").html("<%= escape_javascript(render partial: 'form') %>");
+  $(function() {
+    RestaurateurCreateForm($('#create-restaurant-form'));
+  })
+<% else %>
+  location.reload();
+<% end %>

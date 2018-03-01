@@ -1,0 +1,16 @@
+#current-location
+  - if session[:address].blank?
+    = form_for :user, url: set_location_users_path, html: { id: 'set-location' } do |f|
+      .location.form-group
+        = text_field_tag 'user[postal_code]', '', placeholder: t('order.postal_code'), class: 'form-control location-field'
+      .location-submit.form-group
+        = f.submit t('location.set'), class: 'btn btn-success btn-block'
+  - else
+    = form_for :user, url: set_location_users_path, html: { id: 'set-location' } do |f|
+      .location.form-group
+        = text_field_tag 'user[postal_code]', '', placeholder: "#{session[:postal_code]}", class: 'form-control location-field'
+      .location-submit.form-group
+        = f.submit t('location.change'), class: 'btn btn-success btn-block'
+
+    .show-restaurants
+      a.btn.btn-success.btn-block href="#{restaurants_path}" = t('restaurant.show')

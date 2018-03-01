@@ -1,0 +1,15 @@
+<%= link_to restaurant_path(restaurant),class: 'no-text-decoration' do %>
+  <div class="productBox">
+    <div class="imageFrame">
+      <%= image_tag restaurant.image.url(:medium) %>
+    </div>
+    <div class="description">
+      <p class="productTitle"><%= restaurant.name %></p>
+      <ul class="ingredients">
+        <% restaurant.tags.each do |tag| %>
+          <li><%= translate_tag(tag.name) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

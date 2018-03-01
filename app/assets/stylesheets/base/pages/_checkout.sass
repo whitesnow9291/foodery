@@ -1,0 +1,144 @@
+.checkout-page-container
+  +outer-container
+
+  .hidden
+    display: none
+  .visible
+    display: block
+
+  .personal-info
+    +span-columns(6)
+    +shift(2)
+    +media(max-width 780px)
+      +span-columns(12)
+      +shift(0)
+
+
+  .order-details
+    +span-columns(3)
+    +media(max-width 780px)
+      +span-columns(12)
+
+  .personal-info
+    .fader
+      position: fixed
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      background-color: rgba(0, 0, 0, .4)
+      z-index: 100
+      display: none
+
+    .header
+      background-color: $color-1
+      color: #fff
+      padding: 15px 10px
+    .subheader
+      padding: 15px 0px
+      font-size: 18px
+
+  .personal-info
+    .process-progressBar
+      width: 100%
+      display: none
+      z-index: 101
+      position: relative
+
+    .process-alert
+      margin-top: 20px
+      display: none
+
+    #checkout-form
+
+      label, input[type=text], textarea
+        font-weight: 300
+
+  .form-line
+    +row()
+
+  .first-name, .last-name
+    +span-columns(3)
+  .address
+    +span-columns(12)
+
+  .postal-code
+    +span-columns(3)
+  .phone
+    +span-columns(4)
+
+  .delivery-time
+    +span-columns(12)
+
+  .delivery-instructions
+    +span-columns(12)
+
+  div.email, .card-number
+    +span-columns(6)
+  .exp-date, .cvc-value
+    +span-columns(3)
+  .submit-checkout
+    +span-columns(6)
+  .use-new-card
+    +span-columns(6)
+
+  .card-creation
+    margin-top: 20px
+
+.checkout
+  .additional-item, .total-price, .order-item-detail, .order-item-option
+    +row()
+
+  .item, .checkout-menuItem, .order-item-optionDetail
+    +span-columns(8)
+  .value, .checkout-price, .order-item-optionPrice
+    +span-columns(4)
+
+  .additional-item.min-order
+    .item, .value
+      color: #f00
+
+  .order-header
+    background-color: $color-1
+    padding: 15px 10px
+    text-align: center
+    color: #fff
+
+  .btn-checkout
+    background-color: $color-1
+    border-radius: 0
+    border: none
+    padding: 11px 10px
+    font-size: 15px
+
+  span.qty
+    font-size: 12px
+    padding-right: 3px
+  .checkout-price
+    text-align: right
+  .item
+    color: #bcbcbc
+
+  .order-item-details
+    color: #bcbcbc
+
+  a.remove-item
+    padding-left: 3px
+
+  .checkout-container
+    margin-top: 15px
+    a
+      text-decoration: none
+      &:hover, &:active
+        text-decoration: none
+
+  .personal-info, .order-details
+    margin-top: 22px
+    box-shadow: -6px 0px 17.43px 3.57px rgba(0,0,0,.15)
+
+  .order-item-details
+    padding: 20px
+
+  .order-item-option
+    font-size: 12px
+    padding-left: 16px

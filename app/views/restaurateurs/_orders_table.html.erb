@@ -1,0 +1,24 @@
+<table class="table orders-table">
+  <thead>
+    <th class='text-left'>#</th>
+    <th class='text-center'><%= t('order.customer') %></th>
+    <th class='text-center'><%= t('order.delivery_date') %></th>
+    <th class='text-center'><%= t('order.status') %></th>
+    <th class='text-center'><%= t('order.amount') %></th>
+    <th class='text-center'><%= t('order.actions') %></th>
+  </thead>
+  <tbody>
+    <% orders.each do |order| %>
+      <tr class="order-row-<%= order.id %>">
+        <td class='text-left number'> <%= order.id %> </td>
+        <td class='text-center'> <%= order.last_name %> <%= order.first_name %> </td>
+        <td class='text-center number'> <%= short_nice_date order.delivery_time.utc %> </td>
+        <td class="order-status text-center status-<%= order.status %>"><%= t("order.status_#{order.status}") %> </td>
+        <td class='text-center number'> <%= number_to_currency order.total_price, precision: 2 %> </td>
+        <td class='text-center'>
+          <%= link_to t('details'), order_details_restaurateur_path(order) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

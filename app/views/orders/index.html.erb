@@ -1,0 +1,53 @@
+<% content_for :account_content do %>
+  <div class="orders-container">
+    <h2><%= t('account.history') %></h2>
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-unstyled list-inline">
+          <li> <%= link_to t('order.all_orders'), orders_path , class: page_navigation(orders_path) %> </li>
+          <li><%= link_to t('order.upcoming'), upcoming_orders_path , class: page_navigation(upcoming_orders_path) %>
+          </li>
+          <li><%= link_to t('order.past'), past_orders_path , class: page_navigation(past_orders_path) %>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="orders foodery-white-container no-padding">
+          <table class="table">
+            <thead>
+              <th class='text-left'>#</th>
+              <th class='text-center'><%= t('restaurant.restaurant') %></th>
+              <th class='text-center'><%= t('order.status') %></th>
+              <th class='text-right'><%= t('order.total') %></th>
+            </thead>
+            <tbody>
+              <% @orders.each do |order| %>
+               <%- if order %>
+                <tr class="order clickeable" onclick="location.href='<%= order_path(order) %>'">
+                  <td class="order-number text-left number">
+                    <%= order.id %>
+                  </td>
+                  <td class="order-restaurantName text-center">
+                    <%= order&.restaurant&.name %>
+                  </td>
+                  <td class="order-status text-center status-<%= order.status %>">
+                    <%= t("order.status_#{order.status.to_s}") %>
+                  </td>
+                  <td class='text-right number'>
+                    <%= number_to_currency order.total_price, precision: 2 %>
+                  </td>
+                </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+<%= render partial: 'shared/account' %>

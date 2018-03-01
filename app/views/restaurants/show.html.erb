@@ -1,0 +1,134 @@
+<%=  content_for :javascript_header do %>
+  <script type="text/javascript">
+    $(document).on("turbolinks:load",function(){
+      var sticky = new Waypoint.Sticky({
+        element: $('#menu-sidebar')
+      });
+
+      var sticky2 = new Waypoint.Sticky({
+        element: $('#my-order-box')
+      });
+    });
+    $(window).on("scroll hashchange",function(){
+      var width = $("#menu-sidebar-wrapper").width();
+      $("#menu-sidebar.stuck").css("width",width+"px");
+      var width2 = $("#my-order-box-wrapper").width();
+      $("#my-order-box.stuck").css("width",width2+"px");
+    });
+  </script>
+<% end %>
+<div id='restaurants-page'>
+  <div class="full-content">
+    <section id="cover" class="" style="background-image: url(<%= @restaurant.image.url %>)">
+      <div id='cover-overlay' class='overlay-30 container-fluid'>
+        <div class="container">
+          <%= link_to t('restaurant.back'), restaurants_path, class: 'back-link' %>
+          <div class="text-center">
+            <h1><%= @restaurant.name %></h1>
+            <% avg_delivery_time = number_with_precision(@restaurant.avg_delivery_time.to_f/60, precision: 1, strip_insignificant_zeros: true) %>
+            <p>
+              <%= @restaurant.food_type %> •
+              <%= number_to_currency @restaurant.min_order, precision: 0 %>
+              <%= t('restaurant.minimum') %> •
+              <%= number_to_currency @restaurant.delivery_fee, precision: 0 %>
+              <%= t('restaurant.delivery') %> •
+              <%= t('restaurant.n_hour_notice', n: avg_delivery_time) %> •
+              <%= t('restaurant.view_schedule') %>
+              <span class="glyphicon glyphicon-info-sign schedule-info-icon" title="<%= @restaurant.schedule_info %>" aria-hidden="true" data-toggle="tooltip"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu-and-order" class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 sidebar sidebarContainer hidden-sm hidden-xs remove-padding">
+            <div id="menu-sidebar-wrapper">
+              <div class="sidebarMenu fixedSidebar" id="menu-sidebar" >
+                <ul>
+                  <% @menus.each do |menu| %>
+                    <li>
+                      <a data-turbolinks="false" href="#<%= menu.name.to_param %>"><%= menu.name %></a>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-7 col-xs-12 remove-padding">
+            <div class="food-type-container">
+              <% @menus.each do |menu| %>
+                <div class="food-group">
+                  <div id="<%=menu.name.to_param%>" class="type-title dropdown-trigger">
+                    <%= menu.name %>
+                    <button class="drop-down-arrow"></button>
+                  </div><ul class="food-list"> <!-- this must be in the same line -->
+                    <% menu.menu_items.order(:id).each do |menu_item| %>
+                      <% if menu_item.image.exists?  %>
+                      <li class="food-item-result">
+                        <% url =  image_url menu_item.image  %>
+                        <div class="food-image" 
+                          style='background-image: url("<%=  url  %>")'></div>
+                        <div class="right">
+                          <div class="food-info">
+                            <span class="food-name"><%= menu_item.name %></span>
+                            <p class="food-description">
+                              <%= menu_item.description %>
+                            </p>
+                          </div>
+                          <div class="food-order menu-item-checkout">
+                            <button class="food-price" data-url="<%= add_item_order_path menu_item %>">
+                              <%= number_to_currency(menu_item.price, unit: "$", separator: ".", format: "%u%n") %>
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                      <% else  %>
+                      <li class="food-item-result">
+                        <div class="food-info">
+                          <span class="food-name"><%= menu_item.name %></span>
+                          <p class="food-description">
+                            <%= menu_item.description %>
+                          </p>
+                        </div>
+                        <div class="food-order menu-item-checkout">
+                          <button class="food-price" data-url="<%= add_item_order_path menu_item %>">
+                            <%= number_to_currency(menu_item.price, unit: "$", separator: ".", format: "%u%n") %>
+                          </button>
+                        </div>
+                      </li>
+                      <% end -%>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- my order -->
+          <div class="col-md-3 col-sm-5 col-xs-12 padding-right-remove myOrder-background">
+            <div id="my-order-box-wrapper">
+              <div class="my-order-box" id="my-order-box">
+                <%= render partial: 'orders/checkout', locals: { order: active_order, show_checkout: true, checkout_page: false } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal-container container-fluid modal-popup">
+  </div>
+
+  <div id="mobile-order" class="visible-xs-block">
+    <%= render partial: 'orders/checkout_mobile', locals: { order: active_order, show_checkout: true, checkout_page: false } %>
+  </div>
+
+  <script>
+    $(function() {
+      dropdownFood();
+    });
+  </script>
+</div>

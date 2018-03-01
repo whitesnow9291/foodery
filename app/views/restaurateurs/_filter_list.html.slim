@@ -1,0 +1,7 @@
+ul
+  li class="#{'active' if @restaunrant_name.blank?}"
+    a href="#" = t('restaurant.all')
+  - current_user.restaurants.each do |restaurant|
+    li class="#{'active' if @restaunrant_name == restaurant.name}"
+      a href="#" data-restaurant="#{restaurant.name}" = restaurant.name
+

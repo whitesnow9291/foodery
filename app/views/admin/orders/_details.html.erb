@@ -1,0 +1,25 @@
+<div class="admin-order-details">
+  <div class="admin-order-restaurant">
+    <span class="restaurant-name"> <%= order.order_items.first.menu_item.menu.restaurant.name%></span>
+    <%order.order_items.includes(:menu_item).group_by{ |s| s.menu_item.name }.each do |menu_name,order_items|%>
+      <div class="admin-order-detail">
+        <div class="order-item">
+          <span class="item-name"><%= order_items.count%>X<%= menu_name%></span>
+          <span class="price"><%= number_to_currency(order_items.map{|p| p.total_price}.sum, unit: "$", separator: ".", format: "%u%n")%></span>
+        </div>
+      </div>
+      <div class="order-item-options">
+        <div class="order-item-optionName"> Options</div>
+        <%OptionItem.where(:order_item_id=>order_items.map{|s| s.id}).group_by{|s| s.name}.each do |option_name,option_items|%>
+          <div class="order-item-option">
+            <div class="order-item-optionDetail">
+              <span class="qty"> <%= option_items.count%>x</span>
+              <span class="name"> <%= option_name%></span>
+              <span class="order-item-optionPrice"> <%= number_to_currency(option_items.map{|p| p.total_price}.sum, unit: "$", separator: ".", format: "%u%n")%></span>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<% if current_user%>
+  <span class="dropdown">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" type="button">
+      <%= current_user.email %>
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <% if current_user.has_role? :admin %>
+        <li>
+          <a data-turbolinks="false" href="<%= admin_root_path %>"><%= t('account.admin_panel') %></a>
+        </li>
+      <% end %>
+      <% if current_user.has_role? :restaurateur %>
+        <li>
+          <a data-turbolinks="false" href="<%= restaurateurs_path %>"><%= t('account.dashboard') %></a>
+        </li>
+      <% end %>
+      <li>
+        <a href="<%= edit_user_registration_path %>"><%= t('account.profile') %></a>
+      </li>
+      <% if !current_user.has_role? :restaurateur%>
+        <li>
+          <a href="<%= orders_path %>"><%= t('order.orders') %></a>
+        </li>
+      <% end %>
+        <li>
+          <a href="<%= destroy_user_session_path %>"><%= t('account.logout') %></a>
+        </li>
+      </ul>
+    </span>
+  <% else %>
+    <a class="auth" href="#"><%= t('account.sign_in') %></a>
+<% end %>

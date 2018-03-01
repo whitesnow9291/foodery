@@ -1,0 +1,3 @@
+Simplified cart: render the order item, with the menu price, render all the
+order item's option items, each with their own price, also make sure that
+option groups render only once.

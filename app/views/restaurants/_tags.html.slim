@@ -1,0 +1,6 @@
+ul
+  li
+    a href="#" class="#{'active' if tag.blank?}" = "#{t('everything')}(#{@restaurants_count})"
+  - ActsAsTaggableOn::Tag.order('id asc').all.each do |food_type|
+    li
+      a href="#" class="#{'active' if tag == food_type.name}" data-tag="#{food_type.name}" = "#{translate_tag(food_type.name)}(#{ @tags.include?(food_type.name) ? food_type.taggings_count : 0})"

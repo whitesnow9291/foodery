@@ -1,0 +1,26 @@
+.home-container
+  +outer-container
+  position: absolute
+  bottom: 200px
+  left: calc(50% - 300px)
+  width: 600px
+
+  .header-message
+    +span-columns(12)
+  .header-location
+    +span-columns(8)
+    +shift(2)
+
+  #current-location
+    .location
+      +span-columns(7)
+      input
+        font-weight: 300
+    .location-submit
+      +span-columns(5)
+
+  #set-location
+    +row
+
+  .show-restaurants a
+    font-weight: 300

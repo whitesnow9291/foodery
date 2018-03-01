@@ -1,0 +1,22 @@
+<div id="indexPage">
+
+  <section id="availableRestaurants" class="container-fluid">
+    <div class="container">
+      <div class="row row-flex">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <h3 class="sectionTitle">
+            <%= "#{@restaurants.count.to_s} #{t('restaurant.caterers_available')}" %>
+          </h3>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <%= render partial: 'restaurants/tags_select.html.erb', locals: { restaurants_count: @restaurants.count} %>
+        </div>
+      </div>
+
+      <div id='restaurantList' class="row">
+        <%= render partial: 'restaurants', locals: { restaurants: @restaurants }%>
+      </div>
+    </div>
+  </section>
+
+</div>

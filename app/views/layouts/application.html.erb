@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+<head>
+  <meta charset="UTF-8">
+  <title><%=  t("title")  %></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+
+  <%= render partial: "layouts/favicons" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "landing-page", :media => "all" %>
+  
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "login_modal" %>
+  <%=  javascript_include_tag "jquery-waypoints"  %>
+  <%=  javascript_include_tag "sticky"  %>
+  <% # snippet for chat %>
+  <%= javascript_include_tag "chat", 'data-turbolinks-track' => false%>
+  <%= javascript_include_tag "modernizr" %>
+  <%=  javascript_include_tag "jquery-waypoints"  %>
+  <%=  javascript_include_tag "sticky"  %>
+  <%= javascript_include_tag "stripe", 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://js.stripe.com/v1/", 'data-turbolinks-track' => true %>
+  <%= javascript_tag "Stripe.publishableKey = \'#{Rails.configuration.stripe[:publishable_key]}\';", 'data-turbolinks-eval': true %>
+  <%= yield(:javascript_header) %>
+</head>
+<body >
+  
+  <section id="top-navigation" class="container-fluid">
+    <%= yield(:header_navigation_partial) %>
+
+    <% unless @hide_logo %>
+      <%= link_to home_url, data:{turbolinks:false} do %>
+        <%= image_tag 'logo.png', class: 'logo', alt: 'Tastier logo' %>
+      <% end %>
+    <% end %>
+
+    <% # if @location %>
+    <%  if false  %>
+      <div class="location-search">
+        <div class="location-controll">
+          <span><%= t('order.deliver_to') %></span>
+          <input type="text" placeholder="<%= @location %>">
+        </div>
+      </div>
+    <% end %>
+
+    <button class="top-menu-btn"></button>
+
+    <% locale_to_switch = I18n.locale == :fr ? :en : :fr %>
+    <div id="switch-language-mobile">
+      <%= link_to locale_to_switch.to_s.upcase, url_for(params.merge(locale: locale_to_switch)),data:{turbolinks:false} %>
+    </div>
+
+    <ul class="menu main-nav">
+      <%= render partial: 'layouts/dropdown_menu_header.html.erb' %>
+    </ul>
+
+    <div id="switch-language-desktop">
+      <%= link_to locale_to_switch.to_s.upcase, url_for(params.merge(locale: locale_to_switch)),
+      data:{turbolinks:false} %>
+    </div>
+  </section>
+
+  <div id="wrap">
+    <div id="main-content-yield" class="clear-top">
+      <%= yield %>
+    </div>
+  </div>
+
+  <section id="footer" class="container-fluid">
+    <div class="container">
+      <span class="copyright">&copy; 2017 Tastier</span>
+
+      <ul class="social-icons">
+        <li>
+          <a target="_blank" href="https://facebook.com/eattastier">
+            <%= image_tag 'icon-facebook-white.png' %>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://instagram.com/eattastier">
+            <%= image_tag 'icon-instagram-white.png' %>
+          </a>
+
+        </li>
+        <li>
+          <a href="#" >
+            <%= image_tag 'icon-twitter-white.png' %>
+          </a>
+        </li>
+      </ul>
+      <% faq_link = I18n.locale == :en ? "https://tastier.zendesk.com/hc/fr/sections/115000420353-Frequent-questions" : "https://tastier.zendesk.com/hc/fr/sections/115000238313-Questions-fréquentes"  %>
+      <a target="_blank" href="<%=faq_link%>" id="faq" >FAQ</a>
+      <a target="_blank" class="f-link" href="https://medium.com/tastierblog">BLOG</a>
+      
+    </div>
+  </section>
+
+  <%= render 'devise/registrations/user_modal', locals: {user: @user} %>
+
+  <%= javascript_include_tag "script" %>
+
+  <script>
+    $(function() {
+      responsiveMenu();
+    });
+  </script>
+
+</body>
+</html>

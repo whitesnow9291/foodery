@@ -1,0 +1,406 @@
+fr:
+  title: "Tastier: Service traiteur à Montréal & Livraison de repas pour entreprise"
+  invalid_postal_code: "Entrez un code postal valide par exemple h3b 0a1"
+  checkout:
+    errors:
+      checkout_diff: "Désolé mais vous essayez de placer une commande sur un autre menu. En une fois, vous ne pouvez commander que d'un menu. Voulez-vous supprimer la commande actuelle et commencer de nouveau ?"
+  charge:
+    success: "Chargé avec succès %{amount}"
+  distance:
+    fail: 'Veuillez définir votre position actuelle'
+
+  stripe_connect_remove: 'Stripe Connect supprimer du compte’’'
+  tastier_utilizes: "Tastier utilise"
+  transfer_earnings: "pour transférer vos gains de façon sécurisée."
+  bank_details: "Vos informations bancaires sont stockées en toute sécurité auprès de notre partenaire de traitement de paiement en utilisant un cryptage de niveau bancaire."
+  remove_stripe_id: "Supprimer l’ID de connexion Stripe"
+
+  details: "Détails"
+  update: "Modifier"
+  back: "Retour"
+  # thank_you: 'Merci de passer une commande avec nous! <br> Votre carte sera débitée une fois votre commande acceptée. <br>  Contactez-nous à <b> <a href="mailto:support@tastier.ca">support@tastier.ca</a></b> ou appelez-nous au <b> <a href="tel:514-552-6804">514 552 6804</a></b> si vous avez un problème avec cette commande.'
+  thank_you: 'Merci'
+  everything: "Tout"
+
+  contact_us: "contact us"
+  let_be_friends: "let's be friends"
+  coming_soon: "we're coming soon"
+  subscribe_below: "we're are preparing something special for you so if want to be updated subscribe below"
+  delivered_to: "Restaurants delivered to"
+  unauthorized_access: "Unauthorized Access!"
+  hi: "Hi"
+  no: "No"
+  yes: "Yes"
+
+  home:
+    catering_made_simple: "Le service traiteur simplifié"
+    order_food_online: "Commandez des repas en ligne"
+    from_the_best: "depuis les meilleurs traiteurs locaux"
+    delicious_convenient: "Délicieux et pratique"
+    for_businesses: "Pour les entreprises"
+    partnered_with_top_restaurants: "Nous nous sommes associés aux meilleurs restaurants et traiteurs locaux, pour vous offrir une variété d’options pratiques, saines et délicieuses pour votre personnel et vos clients au bureau. Pas de hausses de prix, pas de frais de service, commandez gratuitement!"
+    get_in_touch: "Entrer en contact"
+    for_caterers: "Pour les traiteurs"
+    join_the_community: "Créez-vous des plats délicieux et aspirez à l'excellence dans votre service? Joignez-vous à la communauté pour rejoindre plus de clients et simplifier votre activité de traiteur."
+    lets_talk: "Parlons-en"
+    how_it_works: "Comment ça marche?"
+    how_it_works_step_1: "Découvrez et choisissez un traiteur parmi notre sélection variée"
+    how_it_works_step_2: "Choisissez les plats et les options que vous aimez sur le menu"
+    how_it_works_step_3: "Planifiez votre événement et soumettez votre commande"
+    how_it_works_step_4: "Obtenez une confirmation de votre traiteur et payez en ligne"
+    restaurant_work_with: "Parmi nos traiteurs "
+
+  account:
+    account: "Compte"
+    profile: "Profil"
+    addresses: "Addresses"
+    credit_cards: "Cartes de crédits"
+    menus: "Menus"
+    history: "Historique"
+    notifications: "Notifications"
+    admin_panel: "Panneau d'administration"
+    dashboard: "Tableau de bord"
+    logout: "Se déconnecter"
+    sign_in: "Se connecter"
+    login: "Se connecter"
+    restaurateur_sign_up: "Inscription Restaurateur"
+    restaurateur_email: "Email Restaurateur"
+    confirmation: "Confirmation"
+    create_account: "Crée un compte"
+
+  login:
+    new_account: "Nouveau compte"
+    your_name: "Votre nom"
+    lost_your_password: "Mot de passe perdu? Entrez votre adresse e-mail. Vous recevrez un lien pour créer un nouveau mot de passe."
+    reset_password: "Réinitialiser le mot de passe"
+    back_to_login: "Retour à la connexion"
+    couldnt_send_email: "Quelque chose s'est mal passé. Le courrier électronique n'a pas été envoyé."
+
+  location:
+    cant_set: "Désolé, nous ne pouvons pas déterminer votre emplacement"
+    set: "Déterminer votre emplacement"
+    set_long: 'SVP déterminer votre emplacements avant de naviguer'
+    change: "Changer de Location"
+
+  restaurant:
+    restaurant: "Restaurant"
+    find: "Voir les traiteurs"
+    all: "Restaurants"
+    show: "Show Restaurants"
+    add: "Add Restaurant"
+    create: "Create Restaurant"
+    accepting_payments: "Le menu %{name} est actuellement en ligne et prêt à accepter des paiements"
+    not_accepting_payments: "Le menu %{name} est actuellement hors ligne et pas prêt à accepter des paiements"
+    caterers_available: "traiteurs disponibles"
+    back: "Retour aux traiteurs"
+    minimum: "minimum"
+    delivery: "livraison"
+    n_hour_notice: "%{n} h d’avis"
+    view_schedule: "Voir l’horaire"
+    view_menu: "Voir le menu"
+    address: "L'adresse du traiteur"
+
+  menu:
+    menu: "Menu"
+    your_menu: "Votre menu"
+    add: "Ajouter un menu"
+    item: "Items du menu"
+    help: "Aide"
+    no_selection_made: "Pas de sélection faite"
+
+  order:
+    order: "Commande"
+    orders: "Commandes"
+    customer: "Client"
+    delivery_date: "Date de livraison"
+    delivery_address: "Adresse de livraison"
+    delivery_hours: "Heure de livraison"
+    delivery_instructions: "Instructions de livraison"
+    delivery_details: "Détails de livraison"
+    deliver_to: "Livrer au"
+    status: "Status"
+    amount: "Montant"
+    actions: "Actions"
+    today_revenue: "Revenu Aujourd’hui"
+    total_orders: "Commandes Total"
+    total_revenue: "Revenu Total"
+    take: "Prendre la commande"
+    my_order: "Ma Commande"
+    subtotal: "Sous-total"
+    delivery_fee: "Frais de livraison"
+    tax: "Taxes"
+    total: "Total"
+    check_out: "Commander"
+    min_order: "Commande Min"
+    cart: "Panier"
+    qty: "QTÉ"
+    add_to_cart: "Ajouter au panier"
+    postal_code: "Code postal"
+    phone: "Téléphone"
+    you_receive: "Vous recevez"
+    delivery_day_time: "Date de livraison/Heure"
+    time: "Heure"
+    option_instructions: "Instructions facultatives pour votre livraison"
+    payment_details: "Détails de paiement"
+    use_different_card: "Utiliser une carte différente"
+    process_with_card: "Commander avec la carte"
+    credit_card_number: "Numéro de Carte de Crédit"
+    expiration_card_date: "Exp. Mois/Année"
+    billing_postal: "Code postal"
+    place_order: "Placer la commande"
+    all_orders: "Commandes"
+    upcoming: "À venir"
+    past: "Passée"
+    status_checkout: "En attente"
+    status_confirmed: "Confirmée"
+
+  user:
+    first_name: "Pénom"
+    last_name: "Nom"
+    address: "Adresse"
+    email_address: "Votre addresse courriel"
+    waiting_confirmation: "En attente de confirmation pour:"
+    leave_blank: "laisser vide si vous ne voulez pas le changer"
+    need_current_password: "nous avons besoin de votre mot de passe actuel pour confirmer vos modifications"
+    valid_email: "Entrez un email valide"
+    generated_password: "votre mot de passe généré"
+
+  enter_postcode: "Entrez votre code postal"
+
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'La validation a échoué : %{errors}'
+        restrict_dependent_destroy:
+          has_one: "Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record} dépendant(e) existe"
+          has_many: "Vous ne pouvez pas supprimer l'enregistrement parce que les %{record} dépendants existent"
+  date:
+    abbr_day_names:
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
+    abbr_month_names:
+    -
+    - jan.
+    - fév.
+    - mar.
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
+    day_names:
+    - dimanche
+    - lundi
+    - mardi
+    - mercredi
+    - jeudi
+    - vendredi
+    - samedi
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+    month_names:
+    -
+    - janvier
+    - février
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - août
+    - septembre
+    - octobre
+    - novembre
+    - décembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: environ une heure
+        other: environ %{count} heures
+      about_x_months:
+        one: environ un mois
+        other: environ %{count} mois
+      about_x_years:
+        one: environ un an
+        other: environ %{count} ans
+      almost_x_years:
+        one: presqu'un an
+        other: presque %{count} ans
+      half_a_minute: une demi-minute
+      less_than_x_minutes:
+        zero: moins d'une minute
+        one: moins d'une minute
+        other: moins de %{count} minutes
+      less_than_x_seconds:
+        zero: moins d'une seconde
+        one: moins d'une seconde
+        other: moins de %{count} secondes
+      over_x_years:
+        one: plus d'un an
+        other: plus de %{count} ans
+      x_days:
+        one: 1 jour
+        other: "%{count} jours"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 mois
+        other: "%{count} mois"
+      x_seconds:
+        one: 1 seconde
+        other: "%{count} secondes"
+    prompts:
+      day: Jour
+      hour: Heure
+      minute: Minute
+      month: Mois
+      second: Seconde
+      year: Année
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: doit être accepté(e)
+      blank: doit être rempli(e)
+      present: doit être vide
+      confirmation: ne concorde pas avec %{attribute}
+      empty: doit être rempli(e)
+      equal_to: doit être égal à %{count}
+      even: doit être pair
+      exclusion: n'est pas disponible
+      greater_than: doit être supérieur à %{count}
+      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+      inclusion: n'est pas inclus(e) dans la liste
+      invalid: n'est pas valide
+      less_than: doit être inférieur à %{count}
+      less_than_or_equal_to: doit être inférieur ou égal à %{count}
+      model_invalid: "Validation échouée : %{errors}"
+      not_a_number: n'est pas un nombre
+      not_an_integer: doit être un nombre entier
+      odd: doit être impair
+      required: doit exister
+      taken: n'est pas disponible
+      too_long:
+        one: est trop long (pas plus d'un caractère)
+        other: est trop long (pas plus de %{count} caractères)
+      too_short:
+        one: est trop court (au moins un caractère)
+        other: est trop court (au moins %{count} caractères)
+      wrong_length:
+        one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+        other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+      other_than: doit être différent de %{count}
+    template:
+      body: 'Veuillez vérifier les champs suivants : '
+      header:
+        one: 'Impossible d''enregistrer ce(tte) %{model} : 1 erreur'
+        other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
+  helpers:
+    select:
+      prompt: Veuillez sélectionner
+    submit:
+      create: Créer un(e) %{model}
+      submit: Enregistrer ce(tte) %{model}
+      update: Modifier ce(tte) %{model}
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%u %n"
+        precision: 2
+        separator: "."
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "$"
+    format:
+      delimiter: " "
+      precision: 3
+      separator: "."
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: milliard
+          million: million
+          quadrillion: million de milliards
+          thousand: millier
+          trillion: billion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: octet
+            other: octets
+          gb: Go
+          kb: ko
+          mb: Mo
+          tb: To
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " et "
+      two_words_connector: " et "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%d %B %Y %Hh %Mmin %Ss"
+      long: "%d %B %Y %H:%M"
+      short: "%d %b %Hh%M"
+    pm: pm
+
+  tags:
+    free_delivery: "Livraison Gratuite"
+    salads: "Salades"
+    italian: "Italien"
+    healthy: "Santé"
+    pasta: "Pâtes"
+    pizza: "Pizza"
+    dessert: "Dessert"
+    breakfast: "Déjeuner"
+    sandwiches: "Sandwiches"
+    mediterranean: "Méditerranéen"
+    vegan: "Vegan"
+    vegetarian: "Végétarien"
+    gluten_free: "Sans Gluten"
+    asian: "Asiatique"
+    mexican: "Méxicain"
+    pastries: "Pâtisseries"
+    Hawaiian: "Hawaïen"
+    Japanese: "Japonais"
+    Sushi: "Sushi"
+    Juices: "jus"
+    Smoothies: "Smoothies"
+    Tacos: "Tacos"
+    Burritos: "Burritos"
+    Wraps: "Wraps"
+    Organic: "Bio"

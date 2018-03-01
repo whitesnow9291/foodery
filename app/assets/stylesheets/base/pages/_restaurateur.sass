@@ -1,0 +1,108 @@
+.restaurateur-container
+  +outer-container
+
+  .restaurateur-create
+    +row()
+    +span-columns(2)
+    +shift(10)
+    margin-bottom: 10px
+
+  .restaurateur-auth
+    +row()
+    +span-columns(6)
+    +shift(3)
+.restaurants-summary
+  +row()
+  margin-bottom: 20px
+  font-weight: 300
+  font-size: 26px
+  padding-bottom: 15px
+  border-bottom: solid 1px #ccc
+
+  .total-orders, .total-revenue, .today-revenue
+    +span-columns(4)
+
+.restaurateur-modal-container
+  +outer-container
+
+  .restaurateur-modal-create
+    +span-columns(10)
+    +shift(1)
+
+    .form-line
+      +row()
+
+    .food-type, .address, .phone
+      +span-columns(6)
+
+    .hours-open, .hours-close
+      +span-columns(3)
+
+    .radius, .min-order, .avg-delivery-time, .delivery_fee
+      +span-columns(3)
+
+    .create-btn
+      +row()
+      padding-top: 10px
+      float: right
+
+    .btn-file
+      position: relative
+      overflow: hidden
+
+    .btn-file input[type=file]
+      position: absolute
+      top: 0
+      right: 0
+      min-width: 100%
+      min-height: 100%
+      font-size: 100px
+      text-align: right
+      filter: alpha(opacity=0)
+      opacity: 0
+      outline: none
+      background: white
+      cursor: inherit
+      display: block
+
+.restaurant-filter
+  margin-bottom: 20px
+
+  li
+    display: inline-block
+    margin-right: 20px
+
+    a
+      color: $color-1
+      text-decoration: none
+
+      &:hover
+        color: darken($color-1, 5%)
+    &.active
+      border-bottom: 2px solid $color-1
+
+.restaurant-order-table
+  +row()
+
+#dashboard
+  font-family: 'Raleway', sans-serif
+  .restaurant-order-table
+    .orders-table
+      background: white
+      border-top: 0.5px solid lightgray
+      border-bottom: 0.5px solid lightgray
+
+      th
+        font-weight: 300
+        height: 50px
+        vertical-align: middle
+      td
+        font-weight: 500
+        height: 50px
+        vertical-align: middle
+      a
+        color: #A4A8AA
+
+    .order-status
+      color: $color-1
+      font-weight: 400

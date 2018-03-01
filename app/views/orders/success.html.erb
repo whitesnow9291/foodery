@@ -1,0 +1,5 @@
+<% content_for :order_action do %>
+  <div class="thank-you">  <%= raw t('thank_you') %></div>
+<% end %>
+
+<%= render partial: 'order_info', locals: {order: @order} %>

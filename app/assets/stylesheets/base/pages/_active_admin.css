@@ -1,0 +1,28 @@
+
+.admin-order-details  .restaurant-name {
+  font-size: 24px;
+}
+
+.admin-order-details .admin-order-restaurant {
+  padding-bottom: 20px;
+}
+
+.admin-order-detail .order-item span {
+  padding-right: 10px;
+}
+
+.admin-order-detail .order-item span.item-name {
+  font-size: 18px;
+}
+
+.admin-order-details .order-item-options {
+  margin-left: 15px;
+}
+
+.admin-order-details .order-item-optionName {
+  font-size: 14px;
+}
+
+.admin-order-details .order-item-optionDetail span {
+  padding-right: 10px;
+}

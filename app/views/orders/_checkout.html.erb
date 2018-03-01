@@ -1,0 +1,65 @@
+<% if order %>
+  <% if checkout_page %>
+    <div class="product-image">
+      <%= image_tag order.restaurant.image.url %>
+    </div>
+    <div class="invoice top-invoice">
+      <div class="calculation">
+        <span class="left"><%= order.restaurant.name %></span>
+        <span class="right"><%=link_to t('restaurant.view_menu'), restaurant_path(order.restaurant) %></span>
+      </div>
+    </div>
+  <% else %>
+    <div class="box-title">
+      <%= t('order.my_order') %>
+      <button class="close-icon close-popup-myOrder" data-dismiss="modal"></button>
+    </div>
+  <% end %>
+  <ul class="ordered-products">
+    <% order.order_items.each do |order_item| %>
+      <% menu_name = order_item.menu_item.name %>
+      <% order_items_same_options = order_item.get_unique_menu_item_with_options %>
+      <% if order_items_same_options.sort[0] == order_item %>
+        <%= render partial: 'orders/checkout_item', locals: { order: order, show_checkout: show_checkout, checkout_page: checkout_page, qty: order_items_same_options.size , price: order_item.menu_item.price, menu_name: menu_name, order_item: order_item } %>
+      <%end%>
+    <% end %>
+  </ul>
+
+  <div class="invoice">
+    <div class="calculation">
+      <span class="left"><%= t('order.subtotal') %></span>
+      <span class="right"><%= number_to_currency(order.total_price - order.restaurant.delivery_fee, unit: "$", separator: ".", format: "%u%n") %></span>
+    </div>
+    <div class="calculation">
+      <span class="left"><%= t('order.delivery_fee') %></span>
+      <span class="right"><%= number_to_currency(order.restaurant.delivery_fee, unit: "$", separator: ".", format: "%u%n") %></span>
+    </div>
+    <div class="calculation">
+      <span class="left"><%= t('order.tax') %></span>
+      <span class="right"><%= number_to_currency(order.total_price * 0.14975, unit: "$", separator: ".", format: "%u%n") %></span>
+    </div>
+    <div class="calculation top">
+      <span class="left"><%= t('order.total') %></span>
+      <span class="right"><%= number_to_currency(order.total_price_with_tax, unit: "$", separator: ".", format: "%u%n") %></span>
+    </div>
+    <% if order.can_checkout? %>
+      <% if show_checkout %>
+        <% path =  current_user ? checkout_orders_path : "#" %>
+        <%= link_to path, data:{toggle:"modal",target:"#{'#login-modal' if !current_user}"} do %>
+          <button class="main-nav checkout"><%= t('order.check_out') %></button>
+        <% end %>
+      <% end %>
+    <% else %>
+      <div class="additional-item min-order">
+        <span class="left"><%= t('order.min_order') %></span>
+        <span class="right">
+          <%= number_to_currency(order.restaurant.min_order, unit: "$", separator: ".", format: "%u%n") %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<script>
+
+  $('#bag-order-count').html("<%= order ? order.order_items.count : 0 %>" );
+</script>

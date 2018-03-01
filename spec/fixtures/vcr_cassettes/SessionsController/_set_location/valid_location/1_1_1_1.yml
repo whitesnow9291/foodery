@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=2%20Harewood%20Place,%20London,%20Canada&key=AIzaSyAICpUrlA29dz7ynTi_78FNStTZEPhsO3s&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Tue, 09 Aug 2016 09:35:35 GMT
+      Expires:
+      - Wed, 10 Aug 2016 09:35:35 GMT
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      Content-Length:
+      - '559'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Cache-Control:
+      - public, max-age=86400
+      Age:
+      - '44'
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34,33,32,31,30"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "2",
+                       "short_name" : "2",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Harewood Place",
+                       "short_name" : "Harewood Pl",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Mayfair",
+                       "short_name" : "Mayfair",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "London",
+                       "short_name" : "London",
+                       "types" : [ "postal_town" ]
+                    },
+                    {
+                       "long_name" : "Greater London",
+                       "short_name" : "Greater London",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "England",
+                       "short_name" : "England",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United Kingdom",
+                       "short_name" : "GB",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "W1S 1BX",
+                       "short_name" : "W1S 1BX",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "2 Harewood Pl, Mayfair, London W1S 1BX, UK",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 51.5147524,
+                       "lng" : -0.1439794
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 51.5161013802915,
+                          "lng" : -0.142630419708498
+                       },
+                       "southwest" : {
+                          "lat" : 51.5134034197085,
+                          "lng" : -0.145328380291502
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJt_RlKisFdkgRYnATBn1_oQ0",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Tue, 09 Aug 2016 09:36:19 GMT
+recorded_with: VCR 3.0.3

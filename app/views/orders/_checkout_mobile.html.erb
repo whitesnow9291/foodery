@@ -1,0 +1,25 @@
+<div id="checkout-container" class="container-fluid">
+  <div class="checkout-cart text-center">
+    <span class="ammount"><%= t('order.total') %>: <span id="mobile-order-amount"><%= number_to_currency( order ? order.total_price_with_tax : 0, unit: "$", separator: ".", format: "%u%n") %></span></span>
+    <div class="btn-group">
+        <button type="button" class="btn cart" data-toggle="modal" data-target="#cart-modal"><%= t('order.cart') %></button>
+      <% path =  current_user ? checkout_orders_path : "#" %>
+      <%= link_to path, data:{toggle:"modal",target:"#{'#login-modal' if !current_user}"} do %>
+        <button  class=" btn filled checkout"><%= t('order.check_out') %></button>
+      <% end %>
+    </div>
+    <div class="clearFix"></div>
+  </div>
+</div>
+
+
+
+<div id="cart-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="my-order-box">
+        <%= render partial: 'orders/checkout.html.erb', locals: { order: order, show_checkout: true, checkout_page: false } %>
+      </div>
+    </div>
+  </div>
+</div>

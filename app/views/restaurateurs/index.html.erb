@@ -1,0 +1,49 @@
+<div id='dashboard'>
+  <section class="container-fluid">
+    <div class="row">
+      <div class="main-container col-md-12">
+        <div class="row">
+          <div class="header col-md-12">
+            <h2><%= t('order.orders') %></h2>
+            <div class="restaurant-filter" data-url="<%= fetch_restaurant_restaurateurs_path %>" js-args=".restaurant-order-table" js-class="RestaurantFilter">
+              <%= render partial: 'filter_list' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9 restaurant-order-table">
+            <%= render partial: 'orders_table', locals: { orders: @orders } %>
+          </div>
+          <div class="col-md-3">
+            <div class='sidebar brand-container foodery-container'>
+              <p class='title'><%= t('order.today_revenue') %></p>
+              <p class='today_revenue number'>
+                <%= number_to_currency current_user.today_revenue, precision: 2 %>
+              </p>
+              <div class='details'>
+                <div class='row row-detail'>
+                  <div class='col-md-8'>
+                    <%= t('order.total_orders') %>
+                  </div>
+                  <div class='col-md-4 number'>
+                    <%= current_user.total_orders %>
+                  </div>
+                </div>
+                <hr/>
+                <div class='row row-detail'>
+                  <div class='col-md-8'>
+                    <%= t('order.total_revenue') %>
+                  </div>
+                  <div class='col-md-4 number'>
+                    <%= number_to_currency current_user.total_revenue, precision: 2 %>
+                  </div>
+                </div>
+                <hr/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </setion>
+</div>

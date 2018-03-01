@@ -1,0 +1,84 @@
+<% user = User.new %>
+
+<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+  <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+    <ul class="cd-switcher">
+      <li><a href="#0"><%= t('account.sign_in') %></a></li>
+      <li><a href="#0"><%= t('login.new_account') %></a></li>
+    </ul>
+
+    <div id="cd-login"> <!-- log in form -->
+      <%= simple_form_for(user, url: session_path(user), html: {class: "cd-form", id: "new_user_login"}, remote: true) do |f| %>
+        <p class="sign-in-error"></p>
+        <p class="fieldset">
+          <label class="image-replace cd-email" for="user_email"></label>
+          <input class="full-width has-padding has-border" id="user_email" type="email" placeholder="<%= t('activerecord.attributes.user.email') %>" name="user[email]">
+        </p>
+
+        <p class="fieldset">
+          <label class="image-replace cd-password" for="user_password"></label>
+          <input class="full-width has-padding has-border" id="user_password" type="password" placeholder="<%= t('activerecord.attributes.user.password') %>" name="user[password]">
+        </p>
+
+        <p class="fieldset">
+          <input type="checkbox" id="remember_me" checked>
+          <label for="remember_me"><%= t('activerecord.attributes.user.remember_me') %></label>
+        </p>
+
+        <p class="fieldset">
+          <input class="full-width" type="submit" value="<%= t('account.login') %>">
+        </p>
+      <% end %>
+        
+      <p class="cd-form-bottom-message"><a href="#0"><%= t('devise.passwords.new.forgot_your_password') %></a></p>
+    </div> <!-- cd-login -->
+
+    <div id="cd-signup"> <!-- sign up form -->
+      <%= simple_form_for(user, url: registration_path(user, format: :json), html: {class: "cd-form"}, remote: true) do |f| %>
+        <p class="sign-up-error"></p>
+        <p class="fieldset">
+          <label class="image-replace cd-username" for="signup-username"></label>
+          <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="<%= t('login.your_name') %>" name="user[name]">
+        </p>
+
+        <p class="fieldset">
+          <label class="image-replace cd-email" for="signup-email"></label>
+          <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="<%= t('activerecord.attributes.user.email') %>" name="user[email]">
+        </p>
+
+        <p class="fieldset">
+          <label class="image-replace cd-password" for="signup-password"></label>
+          <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="<%= t('activerecord.attributes.user.password') %>" name="user[password]">
+        </p>
+
+        <!-- <p class="fieldset">
+          <input type="checkbox" id="accept-terms">
+          <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+        </p> -->
+
+        <p class="fieldset">
+          <input class="full-width has-padding" type="submit" value="<%= t('account.create_account') %>">
+        </p>
+      <% end %>
+    </div> <!-- cd-signup -->
+
+    <div id="cd-reset-password"> <!-- reset password form -->
+      <p class="cd-form-message"><%= t('login.lost_your_password') %></p>
+
+      <%= simple_form_for(user, url: password_path(user), html: { method: :post, class: "cd-form", id: "forgot-password-form" }, remote: true) do |f| %>
+        <p class="fieldset">
+          <label class="image-replace cd-email" for="reset-email"></label>
+          <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="<%= t('activerecord.attributes.user.email') %>" name="user[email]">
+        </p>
+
+        <p class="instructions-sent"></p>
+
+        <p class="fieldset">
+          <input class="full-width has-padding" type="submit" value="<%= t('login.reset_password') %>">
+        </p>
+      <% end %>
+
+      <p class="cd-form-bottom-message"><a href="#0"><%= t('login.back_to_login') %></a></p>
+    </div> <!-- cd-reset-password -->
+  </div> <!-- cd-user-modal-container -->
+</div> <!-- cd-user-modal -->

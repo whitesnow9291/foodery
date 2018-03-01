@@ -1,0 +1,136 @@
+<div id="landing-page">
+  <section id="coverFilter" class="container-fluid">
+    <div class="mobile-background"></div>
+    <div class="container">
+      <div class="content">
+        <h1><%= t('home.catering_made_simple') %></h1>
+        <p class="subtitle">
+          <%= t('home.order_food_online') %> <br class="breakline"><%= t('home.from_the_best') %></p>
+          <div class="filter-container">
+            <%= render partial: 'shared/location' %>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <section id="restaurants-available" class="container-fluid">
+    <div class="container">
+      <div class="center">
+        <h3 class="sectionTitle"><%= t('home.delicious_convenient') %></h3>
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="productBox">
+            <div class="image-frame">
+              <%= image_tag 'image-landing-product2.jpg' %>
+            </div>
+            <div class="description">
+              <p class="productTitle"><%= t('home.for_businesses') %></p>
+              <p class="product-desc">
+                <%= t('home.partnered_with_top_restaurants') %>
+              </p>
+            </div>
+            <% link = I18n.locale == :en ? "https://tastierformulaire.typeform.com/to/oxahJH" : "https://tastierformulaire.typeform.com/to/wuTXYb" %>
+            <a class="viewButton" target="_blank" href="<%=  link %>"><%= t('home.get_in_touch') %></a>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="productBox purple-background">
+            <div class="image-frame">
+              <%= image_tag 'image-landing-product4.jpg' %>
+            </div>
+            <div class="description">
+              <p class="productTitle"><%= t('home.for_caterers') %></p>
+              <p class="product-desc">
+                <%= t('home.join_the_community') %>
+              </p>
+            </div>
+            <% link2 = I18n.locale == :en ? "https://tastierformulaire.typeform.com/to/Ntkm0M" : "https://tastierformulaire.typeform.com/to/b1me27" %>
+            <a class="viewButton" target="_blank" href="<%=  link2 %>"><%= t('home.lets_talk') %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps-section" class="container-fluid">
+    <div class="container">
+      <div class="center">
+        <h3 class="sectionTitle"><%= t('home.how_it_works') %></h3>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <div class="step-container">
+            <div class="step-box">
+              <div class="column">
+                <div class="step-number">1</div>
+              </div>
+              <div class="column">
+                <div class="step-description">
+                  <p><%= t('home.how_it_works_step_1') %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 ">
+          <div class="step-container">
+            <div class="step-box">
+              <div class="step-column">
+                <div class="step-number">2</div>
+              </div>
+              <div class="step-column">
+                <div class="step-description">
+                  <p><%= t('home.how_it_works_step_2') %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <div class="step-container">
+            <div class="step-box">
+              <div class="step-column">
+                <div class="step-number">3</div>
+              </div>
+              <div class="step-column">
+                <div class="step-description">
+                  <p><%= t('home.how_it_works_step_3') %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 ">
+          <div class="step-container">
+            <div class="step-box">
+              <div class="column">
+                <div class="step-number">4</div>
+              </div>
+              <div class="column">
+                <div class="step-description">
+                  <p><%= t('home.how_it_works_step_4') %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="restaurants-logos">
+    <div class="center">
+      <h3 class="sectionTitle"><%= t("home.restaurant_work_with")  %></h3>
+    </div>
+    <div id="logos">
+      <div class="logo" style="background-image: url('<%=  image_url "logo-rest0.svg"  %>')"></div>
+      <div class="logo" style="background-image: url('<%=  image_url "logo-rest1.png"  %>')"></div>
+      <div class="logo" style="background-image: url('<%=  image_url "logo-rest2.png"  %>')"></div>
+      <div class="logo" style="background-image: url('<%=  image_url "logo-rest3.png"  %>')"></div>
+      <div class="logo" style="background-image: url('<%=  image_url "logo-rest5.jpg"  %>')"></div>
+      <div class="logo" style="background-image: url('<%=  image_url "logo-rest4.jpg"  %>')"></div>
+    </div>
+  </section>
+</div>

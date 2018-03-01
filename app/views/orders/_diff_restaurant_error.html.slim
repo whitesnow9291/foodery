@@ -1,0 +1,8 @@
+.error-diff-checkout-modal js-class="RemoveActiveOrder"
+  .error
+    .message = I18n.t 'checkout.errors.checkout_diff'
+    .actions
+      .action.yes
+        a.btn.btn-danger.btn-remove-activeOrder data-url="#{remove_active_order_orders_path}"  href="#" = t('yes')
+      .action.no
+        a.btn.btn-success href="#" = t('no')

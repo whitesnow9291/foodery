@@ -1,0 +1,15 @@
+<%unless price == 0 %>
+  <li class="product-item">
+    <div class="<%= !checkout_page ? 'wide-price' : nil %>">
+      <span class="ammount">
+        <%= "#{qty}x" %>
+      </span>
+
+      <span class="name"><%= order_item.menu_item.name %></span>
+      <div class="price-group b">
+        <span class="price"><%= number_to_currency(order.total_price - order.restaurant.delivery_fee, unit: "$", separator: ".", format: "%u%n") %></span>
+        <button class="remove-product-btn" data-url="<%= remove_item_order_path(order_item.menu_item, order_item: order_item, checkout_page: checkout_page, show_checkout: show_checkout ,grouped: [])%>"></button>
+      </div>
+    </div>
+  </li>
+<%end%>

@@ -1,0 +1,18 @@
+<% content_for :order_action do %>
+  <% if @order.checkout? %>
+    <%= link_to order_confirm_restaurateur_path(id: @order.id), class: 'btn btn-warning btn-block order-action-btn' do %>
+      <strong><%= t('order.take') %></strong>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% content_for :header_navigation do %>
+  <%= link_to :back do %>
+    <strong>< <%= t('back') %></strong>
+  <% end %>
+<% end %>
+
+<% @hide_logo = true %>
+
+<%= render partial: 'shared/header_navigation_partial' %>
+<%= render partial: 'orders/order_info', locals: {order: @order} %>

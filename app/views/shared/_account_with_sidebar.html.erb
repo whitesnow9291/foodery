@@ -1,0 +1,32 @@
+<div id='account'>
+  <section class="container-fluid">
+    <div class="row foodery-container">
+      <div class='col-md-8 col-md-offset-2'>
+        <div class="row">
+          <div id='account-navigation' class='col-md-4'>
+            <h2><%= t('account.account') %></h2>
+            <ul class="list-unstyled">
+              <li>
+                <%= link_to t('account.profile'), edit_user_registration_path, class: page_navigation(edit_user_registration_path) %> </li>
+              <li><a><%= t('account.addresses') %></a></li>
+              <li><a><%= t('account.credit_cards') %></a></li>
+              <li>
+                <% if current_user.has_role? :restaurateur %>
+                  <%= link_to t('account.menus'), restaurateur_restaurants_path, class:
+                  page_navigation(restaurateur_restaurants_path) %>
+                <% else %>
+                  <%= link_to t('account.history'), orders_path, class:
+                  controller_navigation('orders') %>
+                <% end %>
+              </li>
+              <li><a><%= t('account.notifications') %></a></li>
+            </ul>
+          </div>
+          <div id='account-content' class='col-md-8'>
+            <%= yield(:account_content) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

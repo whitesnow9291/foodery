@@ -1,0 +1,8 @@
+<div class="selectBox tags_select">
+  <select name="" id="tag_selector">
+    <option value=""><%= "#{t('everything')}(#{restaurants_count.to_s})" %></option>
+    <% ActsAsTaggableOn::Tag.order('id asc').all.each do |food_type| %>
+      <option value="<%= food_type.name %>"><%= translate_tag(food_type.name) %> (<%=  @tags.include?(food_type.name) ? food_type.taggings_count : 0 %>)</option>
+    <% end %>
+  </select>
+</div>

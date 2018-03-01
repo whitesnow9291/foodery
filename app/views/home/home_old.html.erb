@@ -1,0 +1,31 @@
+<% content_for :header_menu do %>
+  <div class="home-container">
+    <div class="header-message">
+      <h1 class="text-center">THE FOOD YOU LOVE, DELIVERED TO YOUR DOOR</h1>
+    </div>
+    <div class="header-location">
+      <%= render partial: 'shared/location' %>
+    </div>
+  </div>
+  <div class="navbar-collapse collapse">
+    <div class="pull-left">
+      <div class="btn-group">
+        <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle" data-toggle="dropdown" href="#">
+          Menu<i class="fa fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#"> Menu item</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pull-right">
+      <%= render partial: 'layouts/dropdown_menu' %>
+      <a class="checkout" href="#">
+        <img src="<%= ::Temple::Utils.escape_html((image_path 'bag.png')) %>" />
+      </a>
+    </div>
+    <div class="brand-name text-center">TASTIER</div>
+  </div>
+<% end %>

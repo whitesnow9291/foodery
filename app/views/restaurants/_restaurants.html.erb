@@ -1,0 +1,5 @@
+<% restaurants.each do |restaurant| %>
+  <div class="col-md-4 col-sm-6">
+    <%= render partial: 'restaurants/show_small.html.erb', locals: {restaurant: restaurant}%>
+  </div>
+<% end %>
